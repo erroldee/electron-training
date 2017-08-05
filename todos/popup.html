@@ -1,0 +1,22 @@
+<head>
+    <script>
+        var electron = require("electron"),
+            { ipcRenderer } = electron;
+
+        window.onload = function() {
+            document.getElementById("myForm").addEventListener("submit", (event) => {
+                event.preventDefault();
+                ipcRenderer.send("todo:add", document.getElementById("myInput").value);
+            });
+        }
+    </script>
+</head>
+<body>
+    <form id="myForm">
+        <div>
+            <label>Enter your todo</label>
+            <input id="myInput" autofocus />
+        </div>
+        <button type="submit">Add</button>
+    </form>
+</body>

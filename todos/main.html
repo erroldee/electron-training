@@ -1,0 +1,21 @@
+<head>
+    <script>
+        const electron = require("electron"),
+            { ipcRenderer } = electron;
+
+        window.onload = function() {
+            ipcRenderer.on("todo:display", (event, data) => {
+                const li = document.createElement("li");
+                const text = document.createTextNode(data);
+
+                li.appendChild(text);
+                document.getElementById("todoList").appendChild(li);
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>My Todos</h1>
+    <ul id="todoList">
+    </ul>
+</body>
